@@ -44,7 +44,25 @@ module.exports = {
       animation: {
         flicker: 'flicker 3s linear infinite',
       },
+      gridRow: {
+        'span-7': 'span 7 / span 7',
+        'span-8': 'span 8 / span 8',
+        'span-9': 'span 9 / span 9',
+        'span-10': 'span 10 / span 10',
+      }
     },
+    gridTemplateRows: {
+      '7': 'repeat(7, minmax(0, 1fr))',
+      '8': 'repeat(8, minmax(0, 1fr))',
+      '9': 'repeat(9, minmax(0, 1fr))',
+      '10': 'repeat(10, minmax(0, 1fr))'
+    },
+    transform: ['hover', 'focus'],
+    scale: {
+       '125': '1.25',
+       '140': '1.40',
+       '150': '1.5',
+     }
   },
   variants: {
     extend: {},

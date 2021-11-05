@@ -29,6 +29,14 @@
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
 
+  .font-primary {
+    @apply text-gray-800;
+  }
+
+  .font-secondary {
+    @apply text-gray-600;
+  }
+
   /* Write your own custom base styles here */
   h1 {
     @apply text-2xl font-bold md:text-4xl font-primary;
@@ -50,6 +58,10 @@
     @apply text-sm font-primary md:text-base;
   }
 
+  p {
+    @apply font-secondary;
+  }
+
   .layout {
     /* 750px */
     /* max-width: 43.75rem; */
@@ -67,6 +79,23 @@
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
   }
+
+  .card {
+  @apply p-6 mt-6 text-left border w-full rounded-xl drop-shadow;
+  }
+
+  .table-city-name {
+    @apply bg-blue-600;
+  }
+
+  .table-row-highlight {
+    @apply bg-purple-200 hover:bg-purple-100 rounded-xl drop-shadow;
+  }
+
+  .table-col-highlight {
+    @apply bg-green-100 hover:bg-green-100 rounded-xl drop-shadow;
+  }
+
 }
 
 @layer utilities {
