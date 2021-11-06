@@ -57,15 +57,16 @@ module.exports = {
       '9': 'repeat(9, minmax(0, 1fr))',
       '10': 'repeat(10, minmax(0, 1fr))'
     },
-    transform: ['hover', 'focus'],
     scale: {
        '125': '1.25',
        '140': '1.40',
-       '150': '1.5',
      }
   },
   variants: {
-    extend: {},
+    extend: {
+       transform: ['group-hover'],
+       scale: ['group-hover'],
+    },
   },
   plugins: [require('@tailwindcss/forms')],
 };

@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import * as CityTimezones from 'city-timezones';
+
 
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/buttons/Button';
@@ -8,9 +10,14 @@ import CustomLink from '@/components/links/CustomLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
+
 export default function HomePage() {
+  let fullCityList = CityTimezones.cityMapping;
+  fullCityList.map((el, i)=>{el["id"]=i});
+
   const [mode, setMode] = React.useState('light');
-  const [nbRows, setNbRows] = React.useState(3);
+  const [activeCityIds, setActiveCityIds] = React.useState([593, 2696, 1, 2, 3, 4, 5, 6])
+  let nbRows = activeCityIds.length;
   function toggleMode() {
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
@@ -22,15 +29,26 @@ export default function HomePage() {
     console.log(nbRows);
   }
 
-  function removeRow() {
-    if (nbRows > 4) {
-      setNbRows(nbRows - 1);
-    }
-    console.log(nbRows);
-  }
-
   function getNbRowsClassName() {
     return ('grid-rows-' + nbRows);
+  }
+
+  let highlightTimeslot = (hover, col) => {
+    if (hover) {
+      document.querySelectorAll("#col"+col).forEach((a)=>a.classList.add("bg-blue-200"));
+    } else {
+      document.querySelectorAll("#col"+col).forEach((a)=>a.classList.remove("bg-blue-200"));
+    }
+  }
+
+  const removeActiveCity = (cityId) => {
+    setActiveCityIds(activeCityIds.filter(l => l != cityId))
+  }
+
+  let deleteThisRow = (rowNb) => {
+    console.log('deleting row number '+rowNb);
+    console.log(CityTimezones.cityMapping);
+    removeActiveCity(rowNb);
   }
 
   const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
@@ -69,27 +87,80 @@ export default function HomePage() {
             Add a row
             </Button>
 
-            <Button className='mt-6' href='/components'
-              onClick={removeRow}
-              variant={mode === 'dark' ? 'light' : 'dark'}
-            >
-            Remove a row
-            </Button>
-
             <p>{ nbRows }</p>
             <p>{clsx('row-span-'+nbRows)}</p>
-            <div className='card'>
-              <div className={clsx("grid grid-cols-10 text-center grid-flow-col bg-blue-100", 'grid-rows-'+nbRows)}>
-                  { nbRows < 1 ? <Row rowNb='1'></Row> : <Row rowNb='1' disabled></Row> }
-                  { nbRows < 2 ? <Row rowNb='2'></Row> : <Row rowNb='2' disabled></Row> }
-                  { nbRows < 3 ? <Row rowNb='3'></Row> : <Row rowNb='3' disabled></Row> }
-                  { nbRows < 4 ? <Row rowNb='4'></Row> : <Row rowNb='4' disabled></Row> }
-                  { nbRows < 5 ? <Row rowNb='5'></Row> : <Row rowNb='5' disabled></Row> }
-                  { nbRows < 6 ? <Row rowNb='6'></Row> : <Row rowNb='6' disabled></Row> }
-                  { nbRows < 7 ? <Row rowNb='7'></Row> : <Row rowNb='7' disabled></Row> }
-                  { nbRows < 8 ? <Row rowNb='8'></Row> : <Row rowNb='8' disabled></Row> }
-                  { nbRows < 9 ? <Row rowNb='9'></Row> : <Row rowNb='9' disabled></Row> }
-                  { nbRows < 10 ? <Row rowNb='10'></Row> : <Row rowNb='10' disabled></Row> }
+            <div className='card bg-blue-100'>
+              <div className={clsx("grid grid-cols-1 text-center grid-flow-col", 'grid-rows-'+nbRows)}>
+                <Row rowNb='1'
+                  rowLabel={nbRows >= 1 ? fullCityList[activeCityIds[0]].city : ""}
+                  cityId={activeCityIds[0]}
+                  disabled={nbRows < 1}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='2'
+                  rowLabel={nbRows >= 2 ? fullCityList[activeCityIds[1]].city : ""}
+                  cityId={activeCityIds[1]}
+                  disabled={nbRows < 2}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='3'
+                  rowLabel={nbRows >= 3 ? fullCityList[activeCityIds[2]].city : ""}
+                  cityId={activeCityIds[2]}
+                  disabled={nbRows < 3}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='4'
+                  rowLabel={nbRows >= 4 ? fullCityList[activeCityIds[3]].city : ""}
+                  cityId={activeCityIds[3]}
+                  disabled={nbRows < 4}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='5'
+                  rowLabel={nbRows >= 5 ? fullCityList[activeCityIds[4]].city : ""}
+                  cityId={activeCityIds[4]}
+                  disabled={nbRows < 5}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='6'
+                  rowLabel={nbRows >= 6 ? fullCityList[activeCityIds[5]].city : ""}
+                  cityId={activeCityIds[5]}
+                  disabled={nbRows < 6}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='7'
+                  rowLabel={nbRows >= 7 ? fullCityList[activeCityIds[6]].city : ""}
+                  cityId={activeCityIds[6]}
+                  disabled={nbRows < 7}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='8'
+                  rowLabel={nbRows >= 8 ? fullCityList[activeCityIds[7]].city : ""}
+                  cityId={activeCityIds[7]}
+                  disabled={nbRows < 8}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='9'
+                  rowLabel={nbRows >= 9 ? fullCityList[activeCityIds[8]].city : ""}
+                  cityId={activeCityIds[8]}
+                  disabled={nbRows < 9}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
+                <Row rowNb='10'
+                  rowLabel={nbRows >= 10 ? fullCityList[activeCityIds[9]].city : ""}
+                  cityId={activeCityIds[9]}
+                  disabled={nbRows < 10}
+                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  deleteRow={(a)=>deleteThisRow(a)}>
+                </Row>
               </div>
             </div>
 
