@@ -37,6 +37,10 @@
     @apply text-gray-600;
   }
 
+  .font-tertiary {
+    @apply text-gray-400;
+  }
+
   /* Write your own custom base styles here */
   h1 {
     @apply text-2xl font-bold md:text-4xl font-primary;
