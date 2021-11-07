@@ -1,1 +1,1 @@
-[schedules.pro](www.schedules.pro?source=www.github.com)
+[schedules.pro](https://www.schedules.pro?source=www.github.com)
