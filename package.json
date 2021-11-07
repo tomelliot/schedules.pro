@@ -18,12 +18,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.3.4",
     "city-timezones": "^1.2.0",
     "clsx": "^1.1.1",
     "dayjs": "^1.10.7",
     "next": "^12.0.1",
     "react": "^17.0.2",
+    "react-day-picker": "^7.4.10",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-search-autocomplete": "^5.4.2",

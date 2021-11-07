@@ -362,6 +362,11 @@
   "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.0.tgz"
   "version" "9.2.0"
 
+"@heroicons/react@^1.0.5":
+  "integrity" "sha512-UDMyLM2KavIu2vlWfMspapw9yii7aoLwzI2Hudx4fyoPwfKfxU8r3cL8dEBXOjcLG0/oOONZzbT14M1HoNtEcg=="
+  "resolved" "https://registry.npmjs.org/@heroicons/react/-/react-1.0.5.tgz"
+  "version" "1.0.5"
+
 "@humanwhocodes/config-array@^0.5.0":
   "integrity" "sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.5.0.tgz"
@@ -3912,7 +3917,7 @@
   "resolved" "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz"
   "version" "2.0.3"
 
-"prop-types@^15.5.4", "prop-types@^15.7.2":
+"prop-types@^15.5.4", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -4005,6 +4010,13 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
+"react-day-picker@^7.4.10":
+  "integrity" "sha512-/QkK75qLKdyLmv0kcVzhL7HoJPazoZXS8a6HixbVoK6vWey1Od1WRLcxfyEiUsRfccAlIlf6oKHShqY2SM82rA=="
+  "resolved" "https://registry.npmjs.org/react-day-picker/-/react-day-picker-7.4.10.tgz"
+  "version" "7.4.10"
+  dependencies:
+    "prop-types" "^15.6.2"
+
 "react-dom@^17.0.2", "react-dom@^17.0.2 || ^18.0.0", "react-dom@>= 16.3.0", "react-dom@0.0.0-experimental-3c4c1c470-20211021":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
@@ -4057,7 +4069,7 @@
     "neo-async" "^2.6.1"
     "object-assign" "^4.1.1"
 
-"react@*", "react@^16.14.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0", "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@0.0.0-experimental-3c4c1c470-20211021", "react@17.0.2":
+"react@*", "react@^16.14.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0", "react@>= 16", "react@>= 16.3.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@0.0.0-experimental-3c4c1c470-20211021", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

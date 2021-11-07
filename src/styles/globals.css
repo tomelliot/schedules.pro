@@ -25,6 +25,20 @@
       U+2215, U+FEFF, U+FFFD;
   }
 
+  .DayPickerInput .DayPicker-wrapper {
+    background-color: #CCCCFF;
+  }
+
+    .DayPickerWrapperDiv .DayPickerInput {
+      height:80%;
+      background-color: rgba(219, 234, 254, var(--tw-bg-opacity));
+    }
+
+    .DayPickerInput input {
+      height:100%;
+      background-color: rgba(219, 234, 254, var(--tw-bg-opacity));
+    }
+
   .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }

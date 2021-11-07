@@ -3,7 +3,8 @@ import * as React from 'react';
 import * as dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-
+import { TrashIcon } from '@heroicons/react/outline'
+import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/outline'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -15,71 +16,100 @@ export default class Row extends React.Component {
 
   render() {
     return (<div
-          className={clsx("transform h-16 group grid grid-cols-9 grid-rows-1 text-center grid-flow-col col-start-1", "row-start-"+this.props.rowNb)}
+          className={clsx("transform h-16 grid grid-cols-9 grid-rows-1 text-center grid-flow-col col-start-1", "row-start-"+this.props.rowNb)}
           style={{display: this.props.disabled ? 'none' : 'grid' }}>
-            <div className={clsx("transform col-span-1 col-start-1 row-span-1  row-start-1 bg-red-100 ...", "group-hover:scale-120")}
+            <div className={clsx("group grid transform col-span-1 col-start-1 row-span-1 row-start-1 place-content-center bg-red-100 cursor-pointer ...")}
                  id="col1"
                  onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { this.props.cityData.city }
-                 <div className={clsx("font-tertiary text-sm")}>
-                 { this.props.cityData.timezone }
-                 </div>
+                <div className={clsx('grid grid-cols-3')}>
+                  <div className={clsx('col-span-2')}>
+                    { this.props.cityData.city }
+                    <div className={clsx("font-tertiary text-sm")}>
+                      { this.props.cityData.timezone }
+                    </div>
+                  </div>
+                  <div className={clsx('w-3/5 h-3/5 col-span-1 text-red-200', "group-hover:text-red-400")}>
+                    <TrashIcon>
+                    </TrashIcon>
+                  </div>
+                </div>
             </div>
-            <div className={clsx("transform scale-75 col-span-1 col-start-2 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("transform group col-span-1 col-start-2 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
                  id="col2"
                  onMouseEnter={()=>this.props.highlightColumn(true, 2)}
                  onMouseLeave={()=>this.props.highlightColumn(false, 2)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().subtract(3,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onClick={()=>this.props.incrementTime(false)}>
+
+                 <div className={clsx("flex relative w-full h-full items-center")}>
+                   <div className={clsx("flex z-20 h-full w-full items-center justify-center")}>
+                    { this.props.baseTime.subtract(3*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
+                   </div>
+                   <div className={clsx("flex z-10 absolute content-end text-blue-100 group-hover:text-blue-300")}>
+                     <ChevronDoubleLeftIcon
+                      height="50%"
+                      width="50%">
+                     </ChevronDoubleLeftIcon>
+                   </div>
+                 </div>
             </div>
-            <div className={clsx("transform col-span-1 col-start-3 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-3 row-span-1 row-start-1 place-content-center ...")}
                  id="col3"
                  onMouseEnter={()=>this.props.highlightColumn(true, 3)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 3)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().subtract(2,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 3)}>
+                 { this.props.baseTime.subtract(2*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform col-span-1 col-start-4 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-4 row-span-1 row-start-1 place-content-center ...")}
                  id="col4"
                  onMouseEnter={()=>this.props.highlightColumn(true, 4)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 4)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().subtract(1,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 4)}>
+                 { this.props.baseTime.subtract(1*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform col-span-1 col-start-5 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-5 row-span-1 row-start-1 place-content-center ...")}
                  id="col5"
                  onMouseEnter={()=>this.props.highlightColumn(true, 5)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 5)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 5)}>
+                 <div>
+                  { this.props.baseTime.tz(this.props.cityData.timezone).format("HH:mm") }
+                 </div>
+                 <div>
+                  { this.props.baseTime.tz(this.props.cityData.timezone).format("(DD MMM)") }
+                 </div>
             </div>
-            <div className={clsx("transform col-span-1 col-start-6 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-6 row-span-1 row-start-1 place-content-center ...")}
                  id="col6"
                  onMouseEnter={()=>this.props.highlightColumn(true, 6)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 6)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().add(1,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 6)}>
+                 { this.props.baseTime.add(1*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform col-span-1 col-start-7 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-7 row-span-1 row-start-1 place-content-center ...")}
                  id="col7"
                  onMouseEnter={()=>this.props.highlightColumn(true, 7)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 7)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().add(2,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 7)}>
+                 { this.props.baseTime.add(2*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform col-span-1 col-start-8 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("grid transform col-span-1 col-start-8 row-span-1 row-start-1 place-content-center ...")}
                  id="col8"
                  onMouseEnter={()=>this.props.highlightColumn(true, 8)}
-                 onMouseLeave={()=>this.props.highlightColumn(false, 8)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().add(3,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onMouseLeave={()=>this.props.highlightColumn(false, 8)}>
+                 { this.props.baseTime.add(3*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform col-span-1 col-start-9 row-span-1  row-start-1 ...", "group-hover:scale-120")}
+            <div className={clsx("transform group col-span-1 col-start-9 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
                  id="col9"
                  onMouseEnter={()=>this.props.highlightColumn(true, 9)}
                  onMouseLeave={()=>this.props.highlightColumn(false, 9)}
-                 onClick={()=>this.props.deleteRow(this.props.cityData.id)}>
-                 { dayjs().add(4,"h").tz(this.props.cityData.timezone).format("HH:mm") }
+                 onClick={()=>this.props.incrementTime(true)}>
+
+                 <div className={clsx("flex relative w-full h-full items-center")}>
+                   <div className={clsx("flex z-20 h-full w-full items-center justify-center")}>
+                    { this.props.baseTime.add(4*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
+                   </div>
+                   <div className={clsx("flex z-10 absolute content-end text-blue-100 group-hover:text-blue-300")}>
+                     <ChevronDoubleRightIcon
+                      height="50%"
+                      width="50%">
+                     </ChevronDoubleRightIcon>
+                   </div>
+                 </div>
             </div>
   </div>)};
 }
