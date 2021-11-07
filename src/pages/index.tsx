@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import styled from 'styled-components'
+
 
 import * as CityTimezones from 'city-timezones';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
@@ -13,10 +13,8 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
 import Layout from '@/components/layout/Layout';
-import Button from '@/components/buttons/Button';
 import Row from '@/components/grid/Row';
 import CustomLink from '@/components/links/CustomLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
 export default function HomePage() {
@@ -36,6 +34,8 @@ export default function HomePage() {
       setActiveCityIds([...activeCityIds, item.id])
     }
     console.log(activeCityIds)
+    Panelbear.track("new city: " + fullCityList[item.id]);
+
   }
 
   const highlightTimeslot = (hover, col) => {
@@ -55,7 +55,7 @@ export default function HomePage() {
     removeActiveCity(cityId);
   }
 
-  let minsToRoundTo = 30;
+  const minsToRoundTo = 30;
   function incrementTime (increment) {
     if (increment) {
       setSelectedDayTime(selectedDayTime.add(minsToRoundTo, 'm'));
@@ -71,12 +71,12 @@ export default function HomePage() {
   function handleDayClick(day) {
     setSelectedDayTime(roundTime(selectedDayTime.year(day.getFullYear()).month(day.getMonth()).date(day.getDate())));
   }
-  const [selectedDayTime, setSelectedDayTime] = React.useState(roundTime(dayjs(new Date())));
 
-  const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
+  const [selectedDayTime, setSelectedDayTime] = React.useState(roundTime(dayjs(new Date())));
   return (
+
     <Layout>
-      {/* <Seo templateTitle='Home' /> */}
+      <Seo templateTitle='schedules.pro' />
       <Seo />
 
       <main>

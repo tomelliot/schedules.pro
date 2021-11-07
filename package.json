@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
+    "@panelbear/panelbear-nextjs": "^1.0.1",
     "@tailwindcss/forms": "^0.3.4",
     "city-timezones": "^1.2.0",
     "clsx": "^1.1.1",
