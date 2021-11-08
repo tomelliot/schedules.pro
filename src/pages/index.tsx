@@ -212,6 +212,8 @@ export default function HomePage() {
               © {new Date().getFullYear()} By{' '}
               <CustomLink href='https://www.tomelliot.net'>
                 Tom Elliot
+              </CustomLink> | <CustomLink href='https://github.com/tomelliot/schedules.pro'>
+                View on Github
               </CustomLink>
             </footer>
           </div>
