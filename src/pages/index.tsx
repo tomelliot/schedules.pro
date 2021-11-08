@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-
+import * as Panelbear from "@panelbear/panelbear-js";
 import * as CityTimezones from 'city-timezones';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import * as dayjs from 'dayjs'

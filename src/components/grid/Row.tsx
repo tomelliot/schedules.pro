@@ -10,7 +10,7 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 export default class Row extends React.Component {
-  constructor (props){
+  constructor (props) {
     super(props);
   }
 
