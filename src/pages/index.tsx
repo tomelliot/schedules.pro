@@ -38,11 +38,24 @@ export default function HomePage() {
 
   }
 
-  const highlightTimeslot = (hover, col) => {
-    if (hover) {
-      document.querySelectorAll("#col"+col).forEach((a)=>a.classList.add("bg-blue-100"));
-    } else {
-      document.querySelectorAll("#col"+col).forEach((a)=>a.classList.remove("bg-blue-100"));
+  const highlightScrollArrows = (hover, col) => {
+    const this_col = +col;
+    let chevrons = null;
+    if (+col > 5) {
+      chevrons = document.querySelectorAll(".right-chevrons")
+    } else if ((+col < 5) && (+col > 0)) {
+      chevrons = document.querySelectorAll(".left-chevrons")
+    }
+    if (chevrons)
+    {
+      if (hover)
+      {
+        chevrons.forEach((a)=>a.classList.remove("text-blue-100"));
+        chevrons.forEach((a)=>a.classList.add("text-blue-300"));
+      } else {
+        chevrons.forEach((a)=>a.classList.remove("text-blue-300"));
+        chevrons.forEach((a)=>a.classList.add("text-blue-100"));
+      }
     }
   }
 
@@ -96,7 +109,7 @@ export default function HomePage() {
                   cityData={nbRows >= 1 ? fullCityList[activeCityIds[0]] : ""}
                   cityId={activeCityIds[0]}
                   disabled={nbRows < 1}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -106,7 +119,7 @@ export default function HomePage() {
                   cityData={nbRows >= 2 ? fullCityList[activeCityIds[1]] : ""}
                   cityId={activeCityIds[1]}
                   disabled={nbRows < 2}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -116,7 +129,7 @@ export default function HomePage() {
                   cityData={nbRows >= 3 ? fullCityList[activeCityIds[2]] : ""}
                   cityId={activeCityIds[2]}
                   disabled={nbRows < 3}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -126,7 +139,7 @@ export default function HomePage() {
                   cityData={nbRows >= 4 ? fullCityList[activeCityIds[3]] : ""}
                   cityId={activeCityIds[3]}
                   disabled={nbRows < 4}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -136,7 +149,7 @@ export default function HomePage() {
                   cityData={nbRows >= 5 ? fullCityList[activeCityIds[4]] : ""}
                   cityId={activeCityIds[4]}
                   disabled={nbRows < 5}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -146,7 +159,7 @@ export default function HomePage() {
                   cityData={nbRows >= 6 ? fullCityList[activeCityIds[5]] : ""}
                   cityId={activeCityIds[5]}
                   disabled={nbRows < 6}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -156,7 +169,7 @@ export default function HomePage() {
                   cityData={nbRows >= 7 ? fullCityList[activeCityIds[6]] : ""}
                   cityId={activeCityIds[6]}
                   disabled={nbRows < 7}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -166,7 +179,7 @@ export default function HomePage() {
                   cityData={nbRows >= 8 ? fullCityList[activeCityIds[7]] : ""}
                   cityId={activeCityIds[7]}
                   disabled={nbRows < 8}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -176,7 +189,7 @@ export default function HomePage() {
                   cityData={nbRows >= 9 ? fullCityList[activeCityIds[8]] : ""}
                   cityId={activeCityIds[8]}
                   disabled={nbRows < 9}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
@@ -186,7 +199,7 @@ export default function HomePage() {
                   cityData={nbRows >= 10 ? fullCityList[activeCityIds[9]] : ""}
                   cityId={activeCityIds[9]}
                   disabled={nbRows < 10}
-                  highlightColumn={(a,b)=>highlightTimeslot(a,b)}
+                  columnHovered={(a,b)=>highlightScrollArrows(a,b)}
                   deleteRow={(a)=>deleteThisRow(a)}
                   incrementTime={(a)=>incrementTime(a)}
                   baseTime={selectedDayTime}
