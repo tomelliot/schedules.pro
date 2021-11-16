@@ -24,7 +24,7 @@ export default function HomePage() {
   const [activeCityIds, setActiveCityIds] = React.useState([593, 2696])
 
   React.useEffect(() => {
-    let citiesIds = localStorage.getItem("citiesIds");
+    const citiesIds = localStorage.getItem("citiesIds");
     if (citiesIds) {
         setActiveCityIds(JSON.parse(localStorage.getItem("citiesIds")));
     } else {
@@ -43,6 +43,7 @@ export default function HomePage() {
       localStorage.setItem("citiesIds", JSON.stringify([...activeCityIds, item.id]));
     }
     Panelbear.track("new city: " + fullCityList[item.id]);
+
   }
 
   const highlightScrollArrows = (hover, col) => {
@@ -67,7 +68,7 @@ export default function HomePage() {
   }
 
   const removeActiveCity = (cityId) => {
-    let newCityIds = activeCityIds.filter(l => l != cityId)
+    const newCityIds = activeCityIds.filter(l => l != cityId)
     setActiveCityIds(newCityIds)
     localStorage.setItem("citiesIds", JSON.stringify(newCityIds));
   }
