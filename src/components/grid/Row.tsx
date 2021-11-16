@@ -108,7 +108,7 @@ export default class Row extends React.Component {
                    <div className={clsx("flex z-20 h-full w-full items-center justify-center")}>
                     { this.props.baseTime.add(4*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
                    </div>
-                   <div className={clsx("flex z-10 absolute content-end text-blue-100 group-hover:text-blue-300", "right-chevrons")}>
+                   <div className={clsx("flex flex-row-reverse z-10 absolute place-content-end text-blue-100 group-hover:text-blue-300", "right-chevrons")}>
                      <ChevronDoubleRightIcon
                       height="50%"
                       width="50%">

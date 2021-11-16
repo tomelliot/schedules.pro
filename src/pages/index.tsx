@@ -23,19 +23,26 @@ export default function HomePage() {
   const [mode, setMode] = React.useState('light');
   const [activeCityIds, setActiveCityIds] = React.useState([593, 2696])
 
+  React.useEffect(() => {
+    let citiesIds = localStorage.getItem("citiesIds");
+    if (citiesIds) {
+        setActiveCityIds(JSON.parse(localStorage.getItem("citiesIds")));
+    } else {
+      localStorage.setItem("citiesIds", JSON.stringify(activeCityIds));
+    }
+  },[]);
+
   const nbRows = activeCityIds.length;
   const handleOnSelect = (item) => {
     // the item selected
-    console.log(item)
     if (nbRows >= 10)
     {
       console.log("already got the max number of cities, sorry!")
     } else {
       setActiveCityIds([...activeCityIds, item.id])
+      localStorage.setItem("citiesIds", JSON.stringify([...activeCityIds, item.id]));
     }
-    console.log(activeCityIds)
     Panelbear.track("new city: " + fullCityList[item.id]);
-
   }
 
   const highlightScrollArrows = (hover, col) => {
@@ -60,7 +67,9 @@ export default function HomePage() {
   }
 
   const removeActiveCity = (cityId) => {
-    setActiveCityIds(activeCityIds.filter(l => l != cityId))
+    let newCityIds = activeCityIds.filter(l => l != cityId)
+    setActiveCityIds(newCityIds)
+    localStorage.setItem("citiesIds", JSON.stringify(newCityIds));
   }
 
   const deleteThisRow = (cityId) => {
@@ -93,7 +102,7 @@ export default function HomePage() {
       <Seo />
 
       <main>
-      <section className={clsx(mode === 'dark' ? 'bg-dark' : 'bg-gray-50')}>
+      <section>
           <div className='flex flex-col pt-24 items-center min-h-screen text-center layout'>
             <h1 className={clsx('m-10')}>schedules.pro</h1>
 
@@ -205,18 +214,18 @@ export default function HomePage() {
                   baseTime={selectedDayTime}
                   deltaTime={minsToRoundTo}>
                 </Row>
-                <div className={clsx("bg-blue-100 col-start-1 row-start-"+nbRows+1)}>
-                <ReactSearchAutocomplete
-                            items={fullCityList}
-                            onSelect={handleOnSelect}
-                            autoFocus
-                            placeholder="Search for a city..."
-                            maxResults={3}
-                            styling={{color: "#1f2937",
-                                      backgroundColor: "none",
-                                      boxShadow: "none",
-                                      border: "none"}}
-                          />
+                <div className={clsx("bg-blue-100 rounded mt-5 col-start-1 row-start-"+nbRows+1)}>
+                  <ReactSearchAutocomplete
+                              items={fullCityList}
+                              onSelect={handleOnSelect}
+                              autoFocus
+                              placeholder="Add a new city..."
+                              maxResults={5}
+                              styling={{color: "#1f2937",
+                                        backgroundColor: "#dbeafe",
+                                        boxShadow: "none",
+                                        border: "none"}}
+                            />
                 </div>
               </div>
             </div>
