@@ -1,5 +1,6 @@
 # schedules.pro Todo list
 
+- [ ] Add a copy to clipboard option for selected times (maybe copy an image with the schedules.pro logo in it somewhere?)
 - [x] Fix left/right arrows:
   - [x] change colours so they don't get lost when hovering
   - [x] add an extra div so right side arrow floats right

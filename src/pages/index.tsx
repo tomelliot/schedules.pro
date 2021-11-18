@@ -42,8 +42,10 @@ export default function HomePage() {
       setActiveCityIds([...activeCityIds, item.id])
       localStorage.setItem("citiesIds", JSON.stringify([...activeCityIds, item.id]));
     }
-    Panelbear.track("new city: " + fullCityList[item.id]);
-
+    let newCity = "new city." + item.id + "." + fullCityList[item.id].city + "." + fullCityList[item.id].iso3;
+    newCity = newCity.replaceAll(" ", "_")
+    Panelbear.track(newCity);
+    console.log(newCity);
   }
 
   const highlightScrollArrows = (hover, col) => {
