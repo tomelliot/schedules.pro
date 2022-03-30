@@ -17,6 +17,21 @@ import Row from '@/components/grid/Row';
 import CustomLink from '@/components/links/CustomLink';
 import Seo from '@/components/Seo';
 
+class MyDayPicker extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.callback(dayjs(new Date()))
+  }
+
+  render(){
+    return (<DayPickerInput { ...this.props } />
+  )}
+}
+
+
 export default function HomePage() {
   const fullCityList = CityTimezones.cityMapping;
   fullCityList.map((el, i)=>{el["id"]=i; el["name"]=el.city + ", " + el.country});
@@ -46,6 +61,7 @@ export default function HomePage() {
     newCity = newCity.replaceAll(" ", "_")
     Panelbear.track(newCity);
     console.log(newCity);
+    console.log(fullCityList[item.id]);
   }
 
   const highlightScrollArrows = (hover, col) => {
@@ -110,10 +126,11 @@ export default function HomePage() {
             <h1 className={clsx('m-10')}>schedules.pro</h1>
 
             <div className='DayPickerWrapperDiv flex rounded p-5 items-center bg-blue-100'>
-              <DayPickerInput
+              <MyDayPicker
                 onDayChange={handleDayClick}
                 selectedDays={selectedDayTime}
-                placeholder={selectedDayTime.format("YYYY-MM-DD")}/>
+                placeholder={selectedDayTime.format("YYYY-MM-DD")}
+                callback={setSelectedDayTime}/>
             </div>
             <div className='card'>
               <div className={clsx("grid grid-cols-1 text-center grid-flow-col", 'grid-rows-'+nbRows+1)}>
