@@ -23,7 +23,7 @@ class MyDayPicker extends React.Component {
   }
 
   componentDidMount() {
-    this.props.callback(dayjs(new Date()))
+    this.props.callback(this.props.newTime)
   }
 
   render(){
@@ -130,11 +130,13 @@ export default function HomePage() {
                 onDayChange={handleDayClick}
                 selectedDays={selectedDayTime}
                 placeholder={selectedDayTime.format("YYYY-MM-DD")}
-                callback={setSelectedDayTime}/>
+                callback={setSelectedDayTime}
+                newTime={roundTime(dayjs(new Date()))}/>
             </div>
             <div className='card'>
               <div className={clsx("grid grid-cols-1 text-center grid-flow-col", 'grid-rows-'+nbRows+1)}>
                 <Row rowNb='1'
+                  nbRows={nbRows}
                   cityData={nbRows >= 1 ? fullCityList[activeCityIds[0]] : ""}
                   cityId={activeCityIds[0]}
                   disabled={nbRows < 1}
@@ -145,6 +147,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='2'
+                  nbRows={nbRows}
                   cityData={nbRows >= 2 ? fullCityList[activeCityIds[1]] : ""}
                   cityId={activeCityIds[1]}
                   disabled={nbRows < 2}
@@ -155,6 +158,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='3'
+                  nbRows={nbRows}
                   cityData={nbRows >= 3 ? fullCityList[activeCityIds[2]] : ""}
                   cityId={activeCityIds[2]}
                   disabled={nbRows < 3}
@@ -165,6 +169,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='4'
+                  nbRows={nbRows}
                   cityData={nbRows >= 4 ? fullCityList[activeCityIds[3]] : ""}
                   cityId={activeCityIds[3]}
                   disabled={nbRows < 4}
@@ -175,6 +180,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='5'
+                  nbRows={nbRows}
                   cityData={nbRows >= 5 ? fullCityList[activeCityIds[4]] : ""}
                   cityId={activeCityIds[4]}
                   disabled={nbRows < 5}
@@ -185,6 +191,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='6'
+                  nbRows={nbRows}
                   cityData={nbRows >= 6 ? fullCityList[activeCityIds[5]] : ""}
                   cityId={activeCityIds[5]}
                   disabled={nbRows < 6}
@@ -195,6 +202,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='7'
+                  nbRows={nbRows}
                   cityData={nbRows >= 7 ? fullCityList[activeCityIds[6]] : ""}
                   cityId={activeCityIds[6]}
                   disabled={nbRows < 7}
@@ -205,6 +213,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='8'
+                  nbRows={nbRows}
                   cityData={nbRows >= 8 ? fullCityList[activeCityIds[7]] : ""}
                   cityId={activeCityIds[7]}
                   disabled={nbRows < 8}
@@ -215,6 +224,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='9'
+                  nbRows={nbRows}
                   cityData={nbRows >= 9 ? fullCityList[activeCityIds[8]] : ""}
                   cityId={activeCityIds[8]}
                   disabled={nbRows < 9}
@@ -225,6 +235,7 @@ export default function HomePage() {
                   deltaTime={minsToRoundTo}>
                 </Row>
                 <Row rowNb='10'
+                  nbRows={nbRows}
                   cityData={nbRows >= 10 ? fullCityList[activeCityIds[9]] : ""}
                   cityId={activeCityIds[9]}
                   disabled={nbRows < 10}

@@ -34,7 +34,7 @@ export default class Row extends React.Component {
                   </div>
                 </div>
             </div>
-            <div className={clsx("transform group col-span-1 col-start-2 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("transform group col-span-1 col-start-2 row-span-1 row-start-1 place-content-center cursor-pointer ...", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col2"
                  onMouseEnter={()=>this.props.columnHovered(true, 2)}
                  onMouseLeave={()=>this.props.columnHovered(false, 2)}
@@ -52,21 +52,21 @@ export default class Row extends React.Component {
                    </div>
                  </div>
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-3 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("grid transform col-span-1 col-start-3 row-span-1 row-start-1 place-content-center cursor-pointer bg-blue-50 ...", this.props.rowNb==1 ? "rounded-t-lg" : "", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col3"
                  onMouseEnter={()=>this.props.columnHovered(true, 3)}
                  onMouseLeave={()=>this.props.columnHovered(false, 3)}
                  onClick={()=>this.props.incrementTime(false)}>
                  { this.props.baseTime.subtract(2*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-4 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("grid transform col-span-1 col-start-4 row-span-1 row-start-1 place-content-center cursor-pointer ...", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col4"
                  onMouseEnter={()=>this.props.columnHovered(true, 4)}
                  onMouseLeave={()=>this.props.columnHovered(false, 4)}
                  onClick={()=>this.props.incrementTime(false)}>
                  { this.props.baseTime.subtract(1*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-5 row-span-1 row-start-1 place-content-center ...")}
+            <div className={clsx("grid transform col-span-1 col-start-5 row-span-1 row-start-1 place-content-center bg-blue-50 ...", this.props.rowNb==1 ? "rounded-t-lg" : "", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col5"
                  onMouseEnter={()=>this.props.columnHovered(true, 5)}
                  onMouseLeave={()=>this.props.columnHovered(false, 5)}>
@@ -77,28 +77,28 @@ export default class Row extends React.Component {
                   { this.props.baseTime.tz(this.props.cityData.timezone).format("(DD MMM)") }
                  </div>
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-6 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("grid transform col-span-1 col-start-6 row-span-1 row-start-1 place-content-center cursor-pointer ...", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col6"
                  onMouseEnter={()=>this.props.columnHovered(true, 6)}
                  onMouseLeave={()=>this.props.columnHovered(false, 6)}
                  onClick={()=>this.props.incrementTime(true)}>
                  { this.props.baseTime.add(1*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-7 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("grid transform col-span-1 col-start-7 row-span-1 row-start-1 place-content-center cursor-pointer bg-blue-50 ...", this.props.rowNb==1 ? "rounded-t-lg" : "", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col7"
                  onMouseEnter={()=>this.props.columnHovered(true, 7)}
                  onMouseLeave={()=>this.props.columnHovered(false, 7)}
                  onClick={()=>this.props.incrementTime(true)}>
                  { this.props.baseTime.add(2*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("grid transform col-span-1 col-start-8 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("grid transform col-span-1 col-start-8 row-span-1 row-start-1 place-content-center cursor-pointer ...", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col8"
                  onMouseEnter={()=>this.props.columnHovered(true, 8)}
                  onMouseLeave={()=>this.props.columnHovered(false, 8)}
                  onClick={()=>this.props.incrementTime(true)}>
                  { this.props.baseTime.add(3*this.props.deltaTime,"m").tz(this.props.cityData.timezone).format("HH:mm") }
             </div>
-            <div className={clsx("transform group col-span-1 col-start-9 row-span-1 row-start-1 place-content-center cursor-pointer ...")}
+            <div className={clsx("transform group col-span-1 col-start-9 row-span-1 row-start-1 place-content-center cursor-pointer bg-blue-50 ...", this.props.rowNb==1 ? "rounded-t-lg" : "", this.props.rowNb==this.props.nbRows ? "rounded-b-lg" : "")}
                  id="col9"
                  onMouseEnter={()=>this.props.columnHovered(true, 9)}
                  onMouseLeave={()=>this.props.columnHovered(false, 9)}
